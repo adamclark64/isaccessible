@@ -1,0 +1,47 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16.x
+          registry-url: 'https://npm.pkg.github.com'
+          # These following two lines are the key:
+          always-auth: true
+          scope: '@adamclark64'
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Ensure NPM access
+        run: yarn npm whoami --scope adamclark64
+
+      - name: Install Dependencies
+        run: yarn set version berry && yarn && yarn build
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.ADAMCLARK64_PAT }}
+
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        with:
+          publish: yarn changeset publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

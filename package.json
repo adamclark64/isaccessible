@@ -1,0 +1,44 @@
+{
+  "name": "@adamclark64/isaccessible",
+  "version": "0.0.1",
+  "description": "make esm lib for the 1st time",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=16"
+  },
+  "scripts": {
+    "prebuild": "tsc -b ./tsconfig.json --clean",
+    "build": "tsc -b ./tsconfig.json",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --testPathPattern '^.*\\.spec\\.ts$'",
+    "lint": "eslint -c ./.eslintrc.cjs --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adamclark64/isAccessible.git",
+    "directory": "dist"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "packageManager": "yarn@3.6.0",
+  "devDependencies": {
+    "@adamclark64/eslint-prettier-config": "^0.0.2",
+    "@adamclark64/jest-config": "^0.1.0",
+    "@changesets/cli": "^2.25.2",
+    "@types/jest": "latest",
+    "@types/node": "^18.11.9",
+    "@types/prettier": "^2",
+    "@types/rimraf": "^3",
+    "jest": "latest",
+    "mock-fs": "^5.2.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4"
+  }
+}
