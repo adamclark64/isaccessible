@@ -1,6 +1,6 @@
 {
   "name": "@adamclark64/isaccessible",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "make esm lib for the 1st time",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,7 +15,7 @@
   "scripts": {
     "prebuild": "tsc -b ./tsconfig.json --clean",
     "build": "tsc -b ./tsconfig.json",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --testPathPattern '^.*\\.spec\\.ts$'",
+    "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest.js -c=jest.config.js --no-cache",
     "lint": "eslint -c ./.eslintrc.cjs --fix"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "@adamclark64/jest-config": "^0.1.0",
     "@changesets/cli": "^2.25.2",
     "@types/jest": "latest",
+    "@types/mock-fs": "^4.13.1",
     "@types/node": "^18.11.9",
     "@types/prettier": "^2",
     "@types/rimraf": "^3",
