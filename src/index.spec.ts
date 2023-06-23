@@ -1,11 +1,14 @@
-import isAccessible from '../src/index.js'
-import { jest } from '@jest/globals'
+// import { jest } from '@jest/globals'
+const jest = require('@jest/globals')
 import mock from 'mock-fs'
+import isAccessible from './index';
 
 jest.mock('fs')
 
 describe('accessible tests', () => {
     beforeAll(() => {
+        jest.setTimeout(5 * 1000)
+
         mock.restore()
         mock({
             'temp-dir': {
@@ -36,14 +39,14 @@ describe('accessible tests', () => {
     })
 
     it('should error on empty dir', async () => {
-        await isAccessible('./empty-dir/test.txt').catch((e) => {
+        await isAccessible('./empty-dir/test.txt').catch((e: any) => {
             expect(e).toBe(false)
             // expect(e.message).toBe("ENOENT, no such file or directory './empty-dir/test.txt'")
         })
     })
 
     it('should error on inaccessible file', async () => {
-        await isAccessible('./inaccessible-contents/file.txt').catch((e) => {
+        await isAccessible('./inaccessible-contents/file.txt').catch((e: any) => {
             expect(e.message).toBe(false)
             // expect(e.message).toBe("EACCES, permission denied './inaccessible-contents/file.txt'")
         })

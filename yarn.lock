@@ -30,6 +30,7 @@ __metadata:
     "@adamclark64/jest-config": ^0.1.0
     "@changesets/cli": ^2.25.2
     "@types/jest": latest
+    "@types/mock-fs": ^4.13.1
     "@types/node": ^18.11.9
     "@types/prettier": ^2
     "@types/rimraf": ^3
@@ -1307,6 +1308,15 @@ __metadata:
   version: 1.2.2
   resolution: "@types/minimist@npm:1.2.2"
   checksum: b8da83c66eb4aac0440e64674b19564d9d86c80ae273144db9681e5eeff66f238ade9515f5006ffbfa955ceff8b89ad2bd8ec577d7caee74ba101431fb07045d
+  languageName: node
+  linkType: hard
+
+"@types/mock-fs@npm:^4.13.1":
+  version: 4.13.1
+  resolution: "@types/mock-fs@npm:4.13.1"
+  dependencies:
+    "@types/node": "*"
+  checksum: a5fcf8212daa270e6aa560019a4bd28a66e6fa49c55c1373746d5894f4aa1aafa5588335194953cf014de3c77df6be67a041fb6638ead7124307370985880b6c
   languageName: node
   linkType: hard
 

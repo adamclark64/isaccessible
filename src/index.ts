@@ -3,11 +3,11 @@ import fsPromises from 'node:fs/promises'
 
 interface Res {
     value: boolean,
-    message?:string
+    message:string
 }
-const isAccessible = async (filePath: string): Promise<Res> => {
+export const isAccessible = async (filePath: string): Promise<Res | boolean> => {
     return await fsPromises.access(filePath, fs.constants.X_OK).then(() => {
-        return {value: true}
+        return true;
     }).catch((err) => {
         return {
             value: false,

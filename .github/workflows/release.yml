@@ -34,7 +34,7 @@ jobs:
         run: yarn npm whoami --scope adamclark64
 
       - name: Install Dependencies
-        run: yarn set version berry && yarn && yarn build
+        run: yarn set version berry && yarn && yarn build && yarn test
         env:
           NODE_AUTH_TOKEN: ${{ secrets.ADAMCLARK64_PAT }}
 
