@@ -1,5 +1,6 @@
-// import { jest } from '@jest/globals'
-const jest = require('@jest/globals')
+import { jest } from '@jest/globals'
+// const jest = require('@jest/globals')
+// import jest from 'jest'
 import mock from 'mock-fs'
 import isAccessible from './index';
 

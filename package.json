@@ -1,6 +1,6 @@
 {
   "name": "@adamclark64/isaccessible",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "make esm lib for the 1st time",
   "type": "module",
   "main": "./dist/index.js",
